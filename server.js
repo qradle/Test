@@ -1,6 +1,6 @@
-var server = require('./server/index')
-var models = require('./server/models')
-var config = require('./config')
+const server = require('./server/index')
+const models = require('./server/models')
+const config = require('./config')
 
 models.sequelize.sync().then(() => {
   console.log('models initialized');

@@ -1,5 +1,5 @@
-var employee = require('./employee')
-var department = require('./department')
+const employee = require('./employee')
+const department = require('./department')
 
 module.exports = {
   employee: employee,

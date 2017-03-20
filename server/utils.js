@@ -1,4 +1,4 @@
-var models = require('./models')
+const models = require('./models')
 
 var generateCrud = (options, router) => {
   router
