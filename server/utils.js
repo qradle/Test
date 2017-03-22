@@ -4,12 +4,16 @@ var generateCrud = (options, router) => {
   router
     .get(`/${options.url}`, (req, res) => {
       models[options.model].findAll().then( items => {
-        res.send(items);
+        res.send(items)
       })
     })
     .get(`/${options.url}/:id`, (req, res) => {
       models[options.model].findById(req.params.id).then( item => {
-        res.send(item)
+        if (item) {
+          res.send(item)
+        } else {
+          res.status(400).send('bad id')
+        }
       })
     })
     .post(`/${options.url}`, (req, res) => {
@@ -19,7 +23,20 @@ var generateCrud = (options, router) => {
     })
     .put(`/${options.url}/:id`, (req, res) => {
       models[options.model].findById(req.params.id).then( item => {
-        item.update(req.body).then(item => res.send(item))
+        if (item) {
+          item.update(req.body).then(item => res.send(item))
+        } else {
+          res.status(400).send('bad id')
+        }
+      })
+    })
+    .delete(`/${options.url}/:id`, (req, res) => {
+      models[options.model].findById(req.params.id).then( item => {
+        if (item) {
+          item.destroy().then(response => res.send(response))
+        } else {
+          res.status(400).send('bad id')
+        }
       })
     })
 }

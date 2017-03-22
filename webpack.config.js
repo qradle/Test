@@ -9,8 +9,8 @@ module.exports = {
   devtool: 'eval',
   output: {
     filename: 'bundle.js',
-    path: __dirname + "/static",
-    publicPath: '/static',
+    path: path.join(__dirname, "/static"),
+    publicPath: '/static'
   },
   module: {
     rules: [
@@ -19,12 +19,11 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel-loader',
         options: {
-          presets: ['es2015', 'stage-0']
+          presets: ['es2015', 'react', 'stage-0']
         }
       }
     ]
   },
-  //
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),

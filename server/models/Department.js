@@ -6,10 +6,10 @@ module.exports = function(sequelize, DataTypes) {
     freezeTableName: true,
     classMethods: {
       associate: function(models) {
-        Department.hasMany(models.Employee, { foreignKey: 'departmentId', as: 'employees'});
+        Department.hasMany(models.Employee, { foreignKey: 'departmentId', as: 'employees'})
       }
     }
-  });
+  })
 
   return Department
 }

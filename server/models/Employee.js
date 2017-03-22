@@ -5,7 +5,7 @@ module.exports = function(sequelize, DataTypes) {
     departmentId: DataTypes.INTEGER,
   }, {
     freezeTableName: true,
-  });
+  })
 
   return Employee
 }

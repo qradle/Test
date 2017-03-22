@@ -15,7 +15,7 @@ app.use(cookie_parser())
 app.use(body_parser.json())
 app.use(body_parser.urlencoded({extended: true}))
 
-app.use('/static', express.static('static'));
+app.use('/static', express.static('static'))
 
 var compiler = webpack(wpconfig)
 app.use(webpackDevMiddleware(compiler, {
@@ -25,14 +25,20 @@ app.use(webpackDevMiddleware(compiler, {
 app.use(webpackHotMiddleware(compiler))
 
 app.use('/api', router)
+app.use(function(err, req, res, next) {
+  console.error(err.stack)
+  res.status(500).send('Something broke!')
+})
 app.get('*', (req, res) => {
-    res.status(200).send(`<!doctype html>
+  res.status(200).send(`<!doctype html>
     <html>
       <head>
-        <title>Users Departments</title>
+        <title>Employees && Departments</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" >
       </head>
       <body>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" ></script>
         <div id="appcontainer"></div>
         <script src="/static/bundle.js"></script>
       </body>
