@@ -10,6 +10,7 @@ react, redux
 
 ## Usage
 ```
+git clone https://github.com/qradle/Test.git
 npm install
 npm run dev-server
 ```
