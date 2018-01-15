@@ -1,4 +1,4 @@
-# Test Trend Technologies app 
+# Test app 
 
 ## Technologies
 ```
